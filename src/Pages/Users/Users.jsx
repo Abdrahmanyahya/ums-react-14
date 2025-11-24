@@ -1,33 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import usefetch from '../../Hooks/usefetch';
 
 function Users() {
-const[users,setusers]=useState([]);
-const [isloding,setloding] = useState(true);
-const [eroor,seterror]=useState('');
-const getusers = async()=>{
-
-try{
-
-const responce = await axios.get(`${import.meta.env.VITE_BURL}/users`);
-console.log(responce.data.users);
-setusers(responce.data.users);
-
-
-}catch(err){
-console.log(err.message);
-seterror(err.message);
-}finally{
-setloding(false);
-}
-
-
-}
-
-useEffect(()=>{
-getusers();
-},[])
-
+const{data,isloding,eroor}=usefetch('users');
 
 if(isloding){
     return <h2>Wait......</h2>
@@ -56,7 +32,7 @@ if(eroor){
         <tbody>
 
        {
-        users.map((user)=>{
+        data.users.map((user)=>{
        return  <tr className='p-2' key={user.id}>
              <td >{user.id}</td>
             <td>{user.name}</td>
