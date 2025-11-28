@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
-function usefetch(path) {
+function usefetch(path,dep=[]) {
 
 const[data,setdata]=useState({});
 const [isloding,setloding] = useState(true);
@@ -27,7 +27,7 @@ setloding(false);
 
 useEffect(()=>{
 getusers();
-},[])
+},dep)
 
 
 

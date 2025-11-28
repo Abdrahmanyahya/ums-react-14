@@ -4,9 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
+  import { ToastContainer} from 'react-toastify';
+
 import { BrowserRouter } from 'react-router-dom'
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <App />
+    <ToastContainer></ToastContainer>
   </BrowserRouter>,
 )
